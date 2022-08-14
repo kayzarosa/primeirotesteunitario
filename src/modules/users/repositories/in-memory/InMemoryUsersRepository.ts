@@ -1,6 +1,6 @@
 import { User } from "../../entities/User";
+import { ICreateUserDTO } from "@modules/users/dtos/ICreateUserDTO";
 
-import { ICreateUserDTO } from "../../useCases/createUser/ICreateUserDTO";
 import { IUsersRepository } from "../IUsersRepository";
 
 export class InMemoryUsersRepository implements IUsersRepository {
