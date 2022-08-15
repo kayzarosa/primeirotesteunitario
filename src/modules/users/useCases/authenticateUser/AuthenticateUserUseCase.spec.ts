@@ -36,26 +36,26 @@ describe("Authenticate User", () => {
     expect(authenticate).toHaveProperty("token");
   });
 
+  it("should not be possible to authenticate the user with incorrect password", async () => {
+    expect(async () => {
+      await createUserUseCase.execute({
+        email: "test@gmail.com",
+        name: "Test",
+        password: "123456",
+      });
+
+      await authenticateUserUseCase.execute({
+        email: "test@gmail.com",
+        password: "324e43d",
+      });
+    }).rejects.toBeInstanceOf(IncorrectEmailOrPasswordError);
+  });
+
   it("should not be possible to authenticate with the wrong email", async () => {
     expect(async () => {
       await authenticateUserUseCase.execute({
         email: "test@gmail.com",
         password: "23434fdg",
-      });
-    }).rejects.toBeInstanceOf(IncorrectEmailOrPasswordError);
-  });
-
-  it("should not be possible to authenticate the user with incorrect password", async () => {
-    const user = await inMemoryUsersRepository.create({
-      email: "test@gmail.com",
-      name: "Test",
-      password: "123456",
-    });
-
-    expect(async () => {
-      await authenticateUserUseCase.execute({
-        email: String(user.email),
-        password: "error",
       });
     }).rejects.toBeInstanceOf(IncorrectEmailOrPasswordError);
   });
