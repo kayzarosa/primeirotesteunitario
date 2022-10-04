@@ -5,10 +5,12 @@ import 'express-async-errors';
 import express from 'express';
 import cors from 'cors';
 
-import './database';
+import connection from './database';
 import '@shared/container/index';
 import { router } from './routes';
 import { AppError } from './shared/errors/AppError';
+
+connection();
 
 const app = express();
 

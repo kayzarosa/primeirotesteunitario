@@ -8,7 +8,7 @@ export default async (databaseTest = "fin_api_test"): Promise<Connection> => {
       database:
         process.env.NODE_ENV === "test"
           ? databaseTest
-          : "fin_api",
+          : "fin_api"
     })
   );
 };

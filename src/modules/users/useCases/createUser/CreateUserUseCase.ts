@@ -1,7 +1,7 @@
-import { CreateUserError } from "./CreateUserError";
-
 import { inject, injectable } from "tsyringe";
 import { hash } from "bcryptjs";
+
+import { CreateUserError } from "./CreateUserError";
 
 import { IUsersRepository } from "@modules/users/repositories/IUsersRepository";
 import { ICreateUserDTO } from "@modules/users/dtos/ICreateUserDTO";
