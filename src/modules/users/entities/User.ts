@@ -26,6 +26,9 @@ export class User {
   @OneToMany(() => Statement, statement => statement.user)
   statement: Statement[];
 
+  @OneToMany(() => Statement, statementSender => statementSender.user)
+  statementSender: Statement[];
+
   @CreateDateColumn()
   created_at: Date;
 
